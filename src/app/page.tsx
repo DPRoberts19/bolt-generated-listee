@@ -1,22 +1,13 @@
-import { getServerSession } from 'next-auth/next'
-import { redirect } from 'next/navigation'
-import { LoginForm } from '@/components/LoginForm'
-import { authOptions } from './api/auth/[...nextauth]/route'
+import { AuthForm } from '@/components/AuthForm'
 
-export default async function Home() {
-  const session = await getServerSession(authOptions)
-  
-  if (session) {
-    redirect('/dashboard')
-  }
-
+export default function Home() {
   return (
     <main className="min-h-screen flex items-center justify-center bg-background">
       <div className="w-full max-w-md p-6">
         <h1 className="text-3xl font-bold text-center mb-8 text-text">
           Welcome to ListShare
         </h1>
-        <LoginForm />
+        <AuthForm />
       </div>
     </main>
   )
